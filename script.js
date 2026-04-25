@@ -20,6 +20,41 @@ function locomotive() {
     ScrollTrigger.refresh();
 }
 locomotive();
+function loading(){
+    // Add loading class to body
+document.body.classList.add("loading");
+
+window.addEventListener("load", () => {
+  const tl = gsap.timeline();
+
+  tl.from(".loader-text", {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    ease: "power2.out"
+  });
+
+  tl.to("#loader", {
+    y: "-100%",
+    duration: 1.2,
+    ease: "power4.inOut"
+  });
+
+  tl.set("#loader", {
+    display: "none"
+  });
+
+  // Enable scroll again
+  document.body.classList.remove("loading");
+
+  // Optional content fade-in
+  tl.from("#main-content", {
+    opacity: 0,
+    duration: 0.6
+  }, "-=0.6");
+});
+}
+loading()
 
 var page2 = document.querySelector("#page2");
 var cursor = document.querySelector("#cursor");
@@ -229,3 +264,4 @@ function navbar() {
 }
 
 navbar();
+
