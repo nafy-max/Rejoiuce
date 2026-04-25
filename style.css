@@ -1,0 +1,687 @@
+@font-face {
+    font-family: light;
+    src: url('assets/fonts/SuisseIntl-Light.woff2');
+}
+
+@font-face {
+    font-family: Regular;
+    src: url('assets/fonts/SuisseIntl-Regular.woff2');
+}
+
+@font-face {
+    font-family: Hero;
+    src: url('assets/fonts/Prata-Regular.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5vw 3vw;
+    font-family: light;
+    color: #fff;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#navToggle{
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: none;
+}
+#page1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    background-color: #000;
+    color: #fff;
+}
+
+#page1 .title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    overflow: hidden;
+
+}
+
+#page1 .title h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    letter-spacing: -1vw;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+#page1 .title h1 span {
+    display: inline-block;
+    /* Required for GSAP transforms */
+    font-family: Hero;
+    font-size: 15vw;
+    color: #fff;
+    line-height: 1.5;
+    will-change: transform;
+}
+
+#page1 .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2.5vw 3vw;
+
+}
+
+#page1 .bottom .left {
+    display: flex;
+    width: 45%;
+    gap: 20px;
+}
+
+#col1, #col2 {
+    width: 30%;
+}
+
+#col1 h3, #col2 h3 {
+    font-family: light;
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+#page2 {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+
+#page2 .elem {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#cursor {
+    height: 100px;
+    width: 100px;
+    background-color: #ff4444;
+    border-radius: 50%;
+    position: fixed; 
+    transform: translate(-50%, -50%) scale(0); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none; 
+    z-index: 99;
+}
+
+#cursor h5 {
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    font-family: sans-serif;
+}
+.elem h1 {
+    font-size: 60px;
+    line-height: 1.1;
+    font-weight: 400;
+    font-family: light;
+}
+
+#page3 {
+    padding: 8vw 5vw;
+    background: #000000;
+    min-height: 100vh;
+    height: auto    ;
+}
+
+.about-content h3 {
+    font-size: 3.8rem;
+    font-family: light;
+    font-weight: 400;
+}
+
+span {
+    position: relative;
+    width: 100vw;
+}
+
+.about-content h3 span::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition: transform 0.3s ease;
+}
+
+.about-content h3 span:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+#about-content {
+    display: flex;
+    width: 100vw;
+    margin-top: 20px;
+    font-family: light;
+}
+
+#about-content .left {
+    width: 50%;
+    font-size: 1.5rem;
+}
+
+#about-content .right {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+#about-content .right p {
+    font-size: 1.3rem;
+}
+
+#page4 {
+    width: 100%;
+    padding: 5vw;
+}
+
+#highlights-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2vw;
+    margin-top: 3vw;
+}
+
+.highlight-card {
+    height: 40vw;
+    width: 48%;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.highlight-card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1; 
+}
+
+.highlight-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2; /* Middle */
+    opacity: 0;
+    transition: opacity ease 0.5s;
+}
+
+.highlight-card video {
+    height: 15vw;
+    width: 15vw;
+    object-fit: cover;
+    position: absolute;
+    top: 0;  
+    left: 0; 
+    z-index: 999; 
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    opacity: 0;
+}
+
+.highlight-card:hover .overlay {
+    opacity: 1;
+}
+
+#page5 {
+    min-height: 100vh; /* Allow it to be full screen */
+    height: auto;      /* Let it grow if marquee cards are tall */
+    width: 100%;
+    padding: 10vw 0;   /* More breathing room for mobile */
+    overflow: visible; /* Changed from hidden so footer can be reached */
+    margin-bottom: 0;   
+}
+#glance-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3vw;
+    margin-bottom: 3vw;
+}
+
+#glance-header h5 {
+    font-size: 1.2vw;
+    font-weight: 400;
+}
+
+/* Marquee Logic */
+.marquee {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: flex;
+    gap: 20px;
+    animation: scroll 20s linear infinite;
+}
+
+/* Pause on Hover */
+.marquee:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Card Styling */
+.glance-card {
+    flex-shrink: 0;
+    width: 25vw;
+    height: 32vw;
+    background-color: #6c6c6c9f;
+    border-radius: 5px;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    white-space: normal; /* Allows text to wrap inside cards */
+}
+
+.glance-card h3 {
+    font-size: 2vw;
+    font-weight: 400;
+    margin-bottom: 1vw;
+}
+
+.glance-card p {
+    font-size: 1.1vw;
+    color: #666;
+}
+
+/* Image Card Styling */
+.img-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2vw;
+    color: white;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.5vw;
+}
+
+footer {
+    position: relative; 
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10vw 5vw;
+    border-top: 1px solid #333;
+    z-index: 10;
+}
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5vw;
+}
+
+/* Left Section */
+.footer-left h2 {
+    font-size: 3.5vw;
+    font-weight: 400;
+    margin-bottom: 3vw;
+    letter-spacing: -0.02em;
+}
+
+.footer-contact p {
+    font-size: 1vw;
+    opacity: 0.8;
+}
+
+.footer-contact a {
+    font-size: 1.2vw;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-top: 5px;
+}
+
+.newsletter {
+    margin-top: 3vw;
+}
+
+.newsletter p {
+    font-size: 0.9vw;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ffffff4d;
+    width: 20vw;
+    padding-bottom: 5px;
+}
+
+.input-field input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    width: 100%;
+    font-family: light;
+}
+
+/* Right Section */
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8vw;
+    text-align: left;
+}
+
+.footer-links {
+    display: flex;
+    gap: 8vw;
+}
+
+.link-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.link-col a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1vw;
+}
+
+.footer-info {
+    display: flex;
+    gap: 8vw;
+}
+
+.footer-info p {
+    font-size: 1vw;
+    line-height: 1.4;
+}
+
+/* Big Logo Branding */
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 2vw;
+}
+.title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    overflow: hidden;
+
+}
+
+footer .title h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    letter-spacing: -1vw;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+footer .title h1 span {
+    display: inline-block;
+    /* Required for GSAP transforms */
+    font-family: Hero;
+    font-size: 15vw;
+    color: #fff;
+    line-height: 1.5;
+    will-change: transform;
+}
+
+    /* --- RESPONSIVE DESIGN --- */
+
+/* Tablets and small laptops (under 1024px) */
+@media (max-width: 1024px) {
+    #page1 .title h1 span {
+        font-size: 18vw;
+    }
+    
+    #about-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    #about-content .left, #about-content .right {
+        width: 100%;
+    }
+
+    .glance-card {
+        width: 45vw; /* Show 2 cards instead of 4 */
+        height: 50vw;
+    }
+}
+
+/* Mobile Phones (under 768px) */
+@media (max-width: 768px) {
+nav {
+        position: fixed;
+        z-index: 1000;
+        padding: 10px 20px;
+    }
+
+    /* Sidebar menu */
+    nav ul {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 75%;
+        background-color: #111;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: 10vw;
+        gap: 30px;
+
+        transform: translateX(100%);
+        opacity: 1;
+        pointer-events: none;
+        z-index: 999;
+    }
+
+    nav ul li a {
+        font-size: 6vw;
+        color: #fff;
+    
+    }
+
+    #navToggle {
+        display: block;
+        z-index: 1001;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    nav #CTA {
+        display: none;
+    }
+
+    #page1 .title h1 span {
+        font-size: 20vw;
+    }
+
+    #page1 .bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5vw;
+    }
+
+    #page1 .bottom .left {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    #page1 .bottom .left #col1, 
+    #page1 .bottom .left #col2 {
+        width: 100%;
+    }
+
+    #page1 .bottom .left #col1 h3, 
+    #page1 .bottom .left #col2 h3 {
+        font-size: 4vw;
+    }
+    #page2 video{
+        height: 80vh;
+    }
+
+    .about-content h3 {
+        font-size: 1.8rem;
+    }
+    #highlights-container {
+        flex-direction: column;
+    }
+    #highlights-header h5{
+        font-size: 7vw;
+    }   
+    .highlight-card {
+        width: 100% !important;
+        height: 80vw;
+    }
+
+    .glance-card {
+        width: 80vw;
+        height: 100vw;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 10vw;
+    }
+
+    .footer-left h2 {
+        font-size: 8vw;
+
+    }
+    .footer-left .footer-contact p ,.footer-left .footer-contact a{
+        font-size: 5vw;
+    }
+    .newsletter p{
+        font-size: 4vw;
+    }
+    #glance-header h5{
+        font-size: 5vw;
+    }
+    .link-col a{
+        font-size: 4vw;
+    }
+    .footer-info .location p,.footer-info .legal p{
+        font-size: 6vw ;
+    }
+    .input-field {
+        width: 100%;
+    }
+
+    .footer-links, .footer-info {
+        gap: 15vw;
+    }
+
+    footer .title h1 span {
+        font-size: 24vw;
+    }
+
+    .hero-heading:nth-child(4) {
+        margin-left: -4vw !important;
+    }
+}
